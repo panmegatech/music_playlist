@@ -8,6 +8,15 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: AppRouter.generateRoute,
+      theme: ThemeData(
+        fontFamily: 'Prompt',
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 18, color: Colors.black),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
+        ),
+      ),
+      darkTheme: null,
+      themeMode: ThemeMode.light,
     );
   }
 }
