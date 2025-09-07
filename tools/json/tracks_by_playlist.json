@@ -1,0 +1,173 @@
+[
+    {
+        "id": 101,
+        "playlist_id": 1,
+        "title": "Falling Through",
+        "artist": "LUCKY",
+        "duration": "3:23",
+        "image_url": "https://i.ytimg.com/vi/GRdWGLMw8II/default.jpg",
+        "track_url": "https://youtube.com/watch?v=GRdWGLMw8II"
+    },
+    {
+        "id": 102,
+        "playlist_id": 1,
+        "title": "I’m Not Gonna Make That Jump For You",
+        "artist": "Zenxith",
+        "duration": "2:51",
+        "image_url": "https://i.ytimg.com/vi/8mPKt6xMVYw/default.jpg",
+        "track_url": "https://youtube.com/watch?v=8mPKt6xMVYw"
+    },
+    {
+        "id": 103,
+        "playlist_id": 1,
+        "title": "I Ruined You",
+        "artist": "Keuning",
+        "duration": "3:47",
+        "image_url": "https://i.ytimg.com/vi/IHApGhd3PSY/default.jpg",
+        "track_url": "https://youtube.com/watch?v=IHApGhd3PSY"
+    },
+    {
+        "id": 104,
+        "playlist_id": 1,
+        "title": "Blood Right Down",
+        "artist": "Shadowgraphs",
+        "duration": "4:02",
+        "image_url": "https://i.ytimg.com/vi/vtfbdYB4Pyo/default.jpg",
+        "track_url": "https://youtube.com/watch?v=vtfbdYB4Pyo"
+    },
+    {
+        "id": 105,
+        "playlist_id": 1,
+        "title": "Pop Song",
+        "artist": "Red Sleeping Beauty",
+        "duration": "3:15",
+        "image_url": "https://i.ytimg.com/vi/4pZ0j8b8R78/default.jpg",
+        "track_url": "https://youtube.com/watch?v=4pZ0j8b8R78"
+    },
+    {
+        "id": 106,
+        "playlist_id": 1,
+        "title": "Patterns",
+        "artist": "adults",
+        "duration": "2:59",
+        "image_url": "https://i.ytimg.com/vi/k2MIY338NTE/default.jpg",
+        "track_url": "https://youtube.com/watch?v=k2MIY338NTE"
+    },
+    {
+        "id": 107,
+        "playlist_id": 1,
+        "title": "Midcentury Dream House",
+        "artist": "The Specific Heats",
+        "duration": "3:44",
+        "image_url": "https://i.ytimg.com/vi/iEzmOK9OJ40/default.jpg",
+        "track_url": "https://youtube.com/watch?v=iEzmOK9OJ40"
+    },
+    {
+        "id": 108,
+        "playlist_id": 1,
+        "title": "Parts of Me (Live)",
+        "artist": "Waves Crashing",
+        "duration": "4:20",
+        "image_url": "https://i.ytimg.com/vi/Rwsrle4HenE/default.jpg",
+        "track_url": "https://youtube.com/watch?v=Rwsrle4HenE"
+    },
+    {
+        "id": 201,
+        "playlist_id": 2,
+        "title": "Harpy Hare (Illustrated Song)",
+        "artist": "Yaelokre",
+        "duration": "3:30",
+        "image_url": "https://i.ytimg.com/vi/5-I1lT6Jbdo/default.jpg",
+        "track_url": "https://youtube.com/watch?v=5-I1lT6Jbdo"
+    },
+    {
+        "id": 301,
+        "playlist_id": 3,
+        "title": "Virgin State of Mind",
+        "artist": "K's Choice",
+        "duration": "3:55",
+        "image_url": "https://i.ytimg.com/vi/7kNzDk2CPHI/default.jpg",
+        "track_url": "https://youtube.com/watch?v=7kNzDk2CPHI"
+    },
+    {
+        "id": 401,
+        "playlist_id": 4,
+        "title": "I Believe in You",
+        "artist": "Ladytron",
+        "duration": "3:11",
+        "image_url": "https://i.ytimg.com/vi/AoKrfZSTUXo/default.jpg",
+        "track_url": "https://youtube.com/watch?v=AoKrfZSTUXo"
+    },
+    {
+        "id": 402,
+        "playlist_id": 4,
+        "title": "The Passenger",
+        "artist": "Metroland",
+        "duration": "4:05",
+        "image_url": "https://i.ytimg.com/vi/V6NsNM3HTW4/default.jpg",
+        "track_url": "https://youtube.com/watch?v=V6NsNM3HTW4"
+    },
+    {
+        "id": 501,
+        "playlist_id": 5,
+        "title": "Waterphile",
+        "artist": "Longing Louisa",
+        "duration": "2:51",
+        "image_url": "https://i.ytimg.com/vi/AQs4ab99THE/default.jpg",
+        "track_url": "https://youtube.com/watch?v=AQs4ab99THE"
+    },
+    {
+        "id": 601,
+        "playlist_id": 6,
+        "title": "Your Solitude",
+        "artist": "Blindness & Light",
+        "duration": "3:17",
+        "image_url": "https://i.ytimg.com/vi/roIaUb1TWYw/default.jpg",
+        "track_url": "https://youtube.com/watch?v=roIaUb1TWYw"
+    },
+    {
+        "id": 701,
+        "playlist_id": 7,
+        "title": "To Sir With Love",
+        "artist": "Lulu",
+        "duration": "2:52",
+        "image_url": "https://i.ytimg.com/vi/JOVQ4vAmM7Y/default.jpg",
+        "track_url": "https://youtube.com/watch?v=JOVQ4vAmM7Y"
+    },
+    {
+        "id": 801,
+        "playlist_id": 8,
+        "title": "Seduce",
+        "artist": "Reverend Beat-Man & Milan Slick",
+        "duration": "3:28",
+        "image_url": "https://i.ytimg.com/vi/CEQsFA-CX3c/default.jpg",
+        "track_url": "https://youtube.com/watch?v=CEQsFA-CX3c"
+    },
+    {
+        "id": 901,
+        "playlist_id": 9,
+        "title": "Soul Man",
+        "artist": "Blues Brothers",
+        "duration": "3:05",
+        "image_url": "https://i.ytimg.com/vi/XM0TUtqddpg/default.jpg",
+        "track_url": "https://youtube.com/watch?v=XM0TUtqddpg"
+    },
+    {
+        "id": 1001,
+        "playlist_id": 10,
+        "title": "Song From The Edge Of The World",
+        "artist": "Siouxsie And The Banshees",
+        "duration": "4:00",
+        "image_url": "https://i.ytimg.com/vi/_AX6cTDKRjw/default.jpg",
+        "track_url": "https://youtube.com/watch?v=_AX6cTDKRjw"
+    },
+    {
+        "id": 1101,
+        "playlist_id": 11,
+        "title": "Double Infinity (Official Lyric Video)",
+        "artist": "Big Thief",
+        "duration": "3:49",
+        "image_url": "https://i.ytimg.com/vi/ZjqLmCpPyKM/default.jpg",
+        "track_url": "https://youtube.com/watch?v=ZjqLmCpPyKM"
+    }
+]

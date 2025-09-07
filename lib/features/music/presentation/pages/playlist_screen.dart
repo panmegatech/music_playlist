@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_playlist/features/core/routes/route_name.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
 
 class PlaylistScreen extends StatelessWidget {
@@ -91,6 +92,12 @@ class PlaylistScreen extends StatelessWidget {
               allPlaylist.length,
               (index) {
                 return ListTile(
+                  onTap: () {
+                    logWarning("playlist pressed");
+                    //* playlist pressed goTo Playlist
+
+                    Navigator.pushNamed(context, RouteName.musicView);
+                  },
                   leading: SizedBox(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
