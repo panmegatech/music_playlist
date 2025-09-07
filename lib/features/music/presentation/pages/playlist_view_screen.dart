@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
+import 'package:music_playlist/features/music/presentation/bloc/player/player_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/song/song_cubit.dart';
 
 class PlaylistViewScreen extends StatefulWidget {
@@ -13,6 +16,7 @@ class PlaylistViewScreen extends StatefulWidget {
 }
 
 class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
+  Random random = Random();
   //? fake songs by playlist id
   // static const allTrackByPlaylistId = [
   //   {
@@ -205,7 +209,18 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return BlocBuilder<SongCubit, SongState>(
+    return BlocConsumer<SongCubit, SongState>(
+      listener: (context, songState) {
+        if (songState is SongHasDataState) {
+          final songCount = songState.songEntity.songs?.length ?? 0;
+          final randomIndex = random.nextInt(songCount);
+
+          final url = songState.songEntity.songs?[randomIndex].trackUrl ?? '';
+
+          logInfo("PlayerCubit > url : $url");
+          context.read<PlayerCubit>().playMusic(url: url);
+        }
+      },
       builder: (context, songState) {
         if (songState is SongHasDataState) {
           final allTrackByPlaylistId = songState.songEntity.songs;

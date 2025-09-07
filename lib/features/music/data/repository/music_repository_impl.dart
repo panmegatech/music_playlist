@@ -1,4 +1,5 @@
 import 'package:dart_either/dart_either.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:music_playlist/features/core/error/exception.dart';
 import 'package:music_playlist/features/core/error/failure.dart';
 import 'package:music_playlist/features/core/utils/handle_catch_failure.dart';
@@ -10,8 +11,12 @@ import 'package:music_playlist/features/music/domain/repository/music_repository
 
 class MusicRepositoryImpl implements MusicRepository {
   final MusicRemoteDataSource remoteDataSource;
+  final AudioPlayer? audioPlayer;
 
-  MusicRepositoryImpl({required this.remoteDataSource});
+  MusicRepositoryImpl({
+    required this.remoteDataSource,
+    required this.audioPlayer,
+  });
   @override
   Future<Either<Failure, PlaylistEntity>> playlist() async {
     try {
@@ -46,5 +51,30 @@ class MusicRepositoryImpl implements MusicRepository {
       logError("repoImpl error: $error");
       return Left(handleCatchFailure(error));
     }
+  }
+
+  @override
+  Future<void> pause() async {
+    await audioPlayer?.pause();
+  }
+
+  @override
+  Future<bool> play(String url) async {
+    try {
+      logDebug("play (url): $url");
+      await stop();
+      // await audioPlayer?.dispose();
+      await audioPlayer?.setUrl(url);
+      audioPlayer?.play();
+      return true;
+    } catch (e) {
+      logError("repoImpl error: $e");
+      return false;
+    }
+  }
+
+  @override
+  Future<void> stop() async {
+    await audioPlayer?.stop();
   }
 }
