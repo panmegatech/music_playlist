@@ -1,18 +1,70 @@
-[
-  {
-    "id": 1,
-    "title": "Top Hits 2025"
-  },
-  {
-    "id": 2,
-    "title": "Chill Vibes"
-  },
-  {
-    "id": 3,
-    "title": "Workout Pump"
-  },
-  {
-    "id": 4,
-    "title": "Classical Focus"
-  }
-]
+{
+  "playlist":
+  [
+    {
+        "id": 1,
+        "title": "Indie, Pop, Alternative, New Wave 273",
+        "description": "Collection of indie, pop, alternative, and new wave tracks.",
+        "image_url": "https://i.ytimg.com/vi/GRdWGLMw8II/default.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Alice <0>",
+        "description": "Experimental and dreamy music selection.",
+        "image_url": "https://i.ytimg.com/vi/5-I1lT6Jbdo/default.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Mesmerizing Tracks",
+        "description": "A playlist of songs that feel dreamy and floating.",
+        "image_url": "https://i.ytimg.com/vi/7kNzDk2CPHI/default.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Electro, Synthpop",
+        "description": "Electronic and synthpop tunes.",
+        "image_url": "https://i.ytimg.com/vi/AoKrfZSTUXo/default.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Ethereal, Heavenly Voices",
+        "description": "Tracks with ethereal and heavenly vocals.",
+        "image_url": "https://i.ytimg.com/vi/AQs4ab99THE/default.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Indie, Pop, Alternative, New Wave 272",
+        "description": "Another indie pop collection continuing from 273.",
+        "image_url": "https://i.ytimg.com/vi/roIaUb1TWYw/default.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Female Vocalists",
+        "description": "Songs featuring powerful female voices.",
+        "image_url": "https://i.ytimg.com/vi/JOVQ4vAmM7Y/default.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Punk",
+        "description": "Raw and energetic punk tracks.",
+        "image_url": "https://i.ytimg.com/vi/CEQsFA-CX3c/default.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Rock it all!",
+        "description": "Legendary rock tracks and popular hits.",
+        "image_url": "https://i.ytimg.com/vi/XM0TUtqddpg/default.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Darkwave, Goth, Post-Punk",
+        "description": "Darkwave, goth, and post-punk vibes.",
+        "image_url": "https://i.ytimg.com/vi/_AX6cTDKRjw/default.jpg"
+    },
+    {
+        "id": 11,
+        "title": "Phili192 2025",
+        "description": "Curated tracks from Phil72 Le Mans.",
+        "image_url": "https://i.ytimg.com/vi/ZjqLmCpPyKM/default.jpg"
+    }
+]}

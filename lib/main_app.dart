@@ -14,9 +14,20 @@ class MainApp extends StatelessWidget {
           bodyLarge: TextStyle(fontSize: 18, color: Colors.black),
           bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
         ),
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Color.fromARGB(255, 35, 49, 63),
+          onPrimary: Colors.black,
+          secondary: Color.fromARGB(255, 51, 73, 98),
+          onSecondary: Colors.white,
+          error: Color(0xFFB00020),
+          onError: Color(0xFFB00020),
+          surface: Colors.white,
+          onSurface: Colors.black,
+        ),
       ),
-      darkTheme: null,
       themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
