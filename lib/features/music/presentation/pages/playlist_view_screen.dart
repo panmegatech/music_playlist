@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MusicViewScreen extends StatelessWidget {
-  const MusicViewScreen({super.key});
+class PlaylistViewScreen extends StatelessWidget {
+  const PlaylistViewScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('music view screen'),
+        child: Text('PlaylistViewScreen'),
       ),
     );
   }
