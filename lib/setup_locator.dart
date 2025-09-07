@@ -7,7 +7,9 @@ import 'package:music_playlist/features/music/data/repository/music_repository_i
 import 'package:music_playlist/features/music/domain/music_config_provider.dart';
 import 'package:music_playlist/features/music/domain/repository/music_repository.dart';
 import 'package:music_playlist/features/music/domain/usecases/playlist_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/song_usecase.dart';
 import 'package:music_playlist/features/music/presentation/bloc/playlist/playlist_cubit.dart';
+import 'package:music_playlist/features/music/presentation/bloc/song/song_cubit.dart';
 
 Future<void> setupLocator() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,11 +52,23 @@ void _registerFeatureMusic() {
     );
   }
 
+  if (!getIt.isRegistered<SongUsecase>()) {
+    getIt.registerLazySingleton<SongUsecase>(
+      () => SongUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
   //bloc
 
   if (!getIt.isRegistered<PlaylistCubit>()) {
     getIt.registerFactory<PlaylistCubit>(
       () => PlaylistCubit(playlistUsecase: getIt<PlaylistUsecase>()),
+    );
+  }
+
+  if (!getIt.isRegistered<SongCubit>()) {
+    getIt.registerFactory<SongCubit>(
+      () => SongCubit(songUsecase: getIt<SongUsecase>()),
     );
   }
 }

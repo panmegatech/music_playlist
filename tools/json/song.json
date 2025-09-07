@@ -1,0 +1,76 @@
+{
+    
+    "songs":[
+    {
+        "id": 101,
+        "playlist_id": 1,
+        "title": "Falling Through",
+        "artist": "LUCKY",
+        "duration": "3:23",
+        "image_url": "https://i.ytimg.com/vi/GRdWGLMw8II/default.jpg",
+        "track_url": "https://youtube.com/watch?v=GRdWGLMw8II"
+    },
+    {
+        "id": 102,
+        "playlist_id": 1,
+        "title": "I’m Not Gonna Make That Jump For You",
+        "artist": "Zenxith",
+        "duration": "2:51",
+        "image_url": "https://i.ytimg.com/vi/8mPKt6xMVYw/default.jpg",
+        "track_url": "https://youtube.com/watch?v=8mPKt6xMVYw"
+    },
+    {
+        "id": 103,
+        "playlist_id": 1,
+        "title": "I Ruined You",
+        "artist": "Keuning",
+        "duration": "3:47",
+        "image_url": "https://i.ytimg.com/vi/IHApGhd3PSY/default.jpg",
+        "track_url": "https://youtube.com/watch?v=IHApGhd3PSY"
+    },
+    {
+        "id": 104,
+        "playlist_id": 1,
+        "title": "Blood Right Down",
+        "artist": "Shadowgraphs",
+        "duration": "4:02",
+        "image_url": "https://i.ytimg.com/vi/vtfbdYB4Pyo/default.jpg",
+        "track_url": "https://youtube.com/watch?v=vtfbdYB4Pyo"
+    },
+    {
+        "id": 105,
+        "playlist_id": 1,
+        "title": "Pop Song",
+        "artist": "Red Sleeping Beauty",
+        "duration": "3:15",
+        "image_url": "https://i.ytimg.com/vi/4pZ0j8b8R78/default.jpg",
+        "track_url": "https://youtube.com/watch?v=4pZ0j8b8R78"
+    },
+    {
+        "id": 106,
+        "playlist_id": 1,
+        "title": "Patterns",
+        "artist": "adults",
+        "duration": "2:59",
+        "image_url": "https://i.ytimg.com/vi/k2MIY338NTE/default.jpg",
+        "track_url": "https://youtube.com/watch?v=k2MIY338NTE"
+    },
+    {
+        "id": 107,
+        "playlist_id": 1,
+        "title": "Midcentury Dream House",
+        "artist": "The Specific Heats",
+        "duration": "3:44",
+        "image_url": "https://i.ytimg.com/vi/iEzmOK9OJ40/default.jpg",
+        "track_url": "https://youtube.com/watch?v=iEzmOK9OJ40"
+    },
+    {
+        "id": 108,
+        "playlist_id": 1,
+        "title": "Parts of Me (Live)",
+        "artist": "Waves Crashing",
+        "duration": "4:20",
+        "image_url": "https://i.ytimg.com/vi/Rwsrle4HenE/default.jpg",
+        "track_url": "https://youtube.com/watch?v=Rwsrle4HenE"
+    }
+]}
