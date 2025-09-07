@@ -13,7 +13,8 @@ class SongCubit extends Cubit<SongState> {
         super(SongInitialState());
   Future<void> getSong({String? playlistId, String? songId}) async {
     emit(SongLoadingState());
-    final callSongUsecase = await _songUsecase.execute();
+    final callSongUsecase =
+        await _songUsecase.execute(playlistId: playlistId, songId: songId);
 
     return callSongUsecase.fold(
       ifLeft: (value) {

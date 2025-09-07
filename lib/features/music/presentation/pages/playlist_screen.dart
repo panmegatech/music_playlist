@@ -116,7 +116,10 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                           logWarning("playlist pressed");
                           //* playlist pressed goTo Playlist
 
-                          Navigator.pushNamed(context, RouteName.musicView);
+                          Navigator.pushNamed(context, RouteName.musicView,
+                              arguments: {
+                                "playlist_id": allPlaylist?[index].id
+                              });
                         },
                         leading: SizedBox(
                           child: ClipRRect(

@@ -19,9 +19,17 @@ class AppRouter {
               child: PlaylistScreen(),
             );
           case RouteName.musicView:
+            final arguments = settings.arguments as Map<String, dynamic>?;
+
+            final playlistId = arguments?['playlist_id'].toString();
+            final songId = arguments?['song_id'].toString();
+
             return BlocProvider(
               create: (_) => SongCubit(songUsecase: getIt()),
-              child: PlaylistViewScreen(),
+              child: PlaylistViewScreen(
+                playlistId: playlistId,
+                songId: songId,
+              ),
             );
           case RouteName.pageNotFound:
           default:

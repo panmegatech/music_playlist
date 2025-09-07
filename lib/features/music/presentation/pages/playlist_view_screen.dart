@@ -193,6 +193,7 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        // logDebug("playlistId: ${widget.playlistId}");
         context
             .read<SongCubit>()
             .getSong(songId: widget.songId, playlistId: widget.playlistId);

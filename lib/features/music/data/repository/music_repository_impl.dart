@@ -33,7 +33,8 @@ class MusicRepositoryImpl implements MusicRepository {
   Future<Either<Failure, SongEntity>> song(
       {String? playlistId, String? songId}) async {
     try {
-      final responseModel = await remoteDataSource.song();
+      final responseModel =
+          await remoteDataSource.song(playlistId: playlistId, songId: songId);
 
       final responseEntity = responseModel.toEntity();
 

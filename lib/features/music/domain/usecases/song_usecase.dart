@@ -9,6 +9,6 @@ class SongUsecase {
 
   Future<Either<Failure, SongEntity>> execute(
       {String? playlistId, String? songId}) async {
-    return await repository.song();
+    return await repository.song(playlistId: playlistId, songId: songId);
   }
 }
