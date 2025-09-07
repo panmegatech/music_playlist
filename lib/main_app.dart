@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
           secondary: Color.fromARGB(255, 51, 73, 98),
           onSecondary: Colors.white,
           error: Color(0xFFB00020),
-          onError: Colors.white,
+          onError: Color(0xFFB00020),
           surface: Colors.white,
           onSurface: Colors.black,
         ),
