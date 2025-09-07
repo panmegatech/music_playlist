@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Music Playlist",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      // "args": ["--flavor", "development", "--dart-define=FLAVOR=development"]
+    },
+    // {
+    //   "name": "Staging Music Playlist",
+    //   "request": "launch",
+    //   "type": "dart",
+    //   "flutterMode": "debug",
+    //   "program": "lib/main.dart",
+    //   "args": ["--flavor", "staging", "--dart-define=FLAVOR=staging"]
+    // },
+    // {
+    //   "name": "Production Music Playlist",
+    //   "request": "launch",
+    //   "type": "dart",
+    //   "flutterMode": "debug",
+    //   "program": "lib/main.dart",
+    //   "args": ["--flavor", "production", "--dart-define=FLAVOR=production"]
+    // }
+  ]
+}
