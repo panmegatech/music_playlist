@@ -59,12 +59,14 @@ class MusicRepositoryImpl implements MusicRepository {
   }
 
   @override
-  Future<bool> play(String url) async {
+  Future<bool> play(String? url) async {
     try {
       logDebug("play (url): $url");
       await stop();
       // await audioPlayer?.dispose();
-      await audioPlayer?.setUrl(url);
+      if (url != null) {
+        await audioPlayer?.setUrl(url);
+      }
       audioPlayer?.play();
       return true;
     } catch (e) {

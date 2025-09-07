@@ -1,16 +1,19 @@
 part of 'player_cubit.dart';
 
-sealed class PlayerState extends Equatable {
-  const PlayerState();
+class PlayerState extends Equatable {
+  final bool isLoading;
+  final bool isPlaying;
+
+  const PlayerState({required this.isLoading, required this.isPlaying});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        isLoading,
+        isPlaying,
+      ];
+
+  PlayerState copyWith({bool? isLoading, bool? isPlaying}) => PlayerState(
+        isLoading: isLoading ?? this.isLoading,
+        isPlaying: isPlaying ?? this.isPlaying,
+      );
 }
-
-final class PlayerInitialState extends PlayerState {}
-
-final class PlayerLoadingState extends PlayerState {}
-
-final class PlayerErrorState extends PlayerState {}
-
-final class PlayerHasDataState extends PlayerState {}

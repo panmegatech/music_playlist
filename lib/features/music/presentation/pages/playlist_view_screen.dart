@@ -192,7 +192,8 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
   //   }
   // ];
 
-  int currentMusicPlaying = 0;
+  int? currentMusicPlaying;
+  int musicPlayingCount = 0;
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
@@ -209,13 +210,19 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+
     return BlocConsumer<SongCubit, SongState>(
       listener: (context, songState) {
         if (songState is SongHasDataState) {
           final songCount = songState.songEntity.songs?.length ?? 0;
           final randomIndex = random.nextInt(songCount);
 
-          final url = songState.songEntity.songs?[randomIndex].trackUrl ?? '';
+          String url = songState.songEntity.songs?[randomIndex].trackUrl ?? '';
+
+          if (currentMusicPlaying != null) {
+            url = songState.songEntity.songs?[currentMusicPlaying!].trackUrl ??
+                '';
+          }
 
           logInfo("PlayerCubit > url : $url");
           context.read<PlayerCubit>().playMusic(url: url);
@@ -224,6 +231,7 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
       builder: (context, songState) {
         if (songState is SongHasDataState) {
           final allTrackByPlaylistId = songState.songEntity.songs;
+          musicPlayingCount = allTrackByPlaylistId?.length ?? 0;
           return Scaffold(
             backgroundColor: colorScheme.secondary,
             appBar: AppBar(
@@ -235,7 +243,7 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: Image.network(
-                      allTrackByPlaylistId?[currentMusicPlaying]
+                      allTrackByPlaylistId?[currentMusicPlaying ?? 0]
                               .imageUrl
                               ?.toString() ??
                           '',
@@ -289,7 +297,7 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                   //* playlist pressed goTo Playlist
                 },
                 title: Text(
-                  '${allTrackByPlaylistId?[currentMusicPlaying].title}',
+                  '${allTrackByPlaylistId?[currentMusicPlaying ?? 0].title}',
                   maxLines: 1,
                   style: TextStyle(
                       color: colorScheme.surface,
@@ -297,7 +305,7 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                       overflow: TextOverflow.ellipsis),
                 ),
                 subtitle: Text(
-                  '${allTrackByPlaylistId?[currentMusicPlaying].artist} - ${allTrackByPlaylistId?[currentMusicPlaying].duration}',
+                  '${allTrackByPlaylistId?[currentMusicPlaying ?? 0].artist} - ${allTrackByPlaylistId?[currentMusicPlaying ?? 0].duration}',
                   maxLines: 2,
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
@@ -306,30 +314,80 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                     fontSize: 14,
                   ),
                 ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          logWarning("moveable icon pressed");
+                trailing: BlocSelector<PlayerCubit, PlayerState, bool>(
+                  selector: (isPlayingState) {
+                    return isPlayingState.isPlaying;
+                  },
+                  builder: (context, isPlayingState) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        isPlayingState
+                            ? IconButton(
+                                onPressed: () {
+                                  logWarning(
+                                      "pause icon pressed / isplay: $isPlayingState");
 
-                          //todo moveable
-                        },
-                        icon: Icon(
-                          Icons.pause,
-                          color: colorScheme.surface,
-                        )),
-                    IconButton(
-                        onPressed: () {
-                          logWarning("moveable icon pressed");
+                                  //* pause
 
-                          //todo moveable
-                        },
-                        icon: Icon(
-                          Icons.skip_next,
-                          color: colorScheme.surface,
-                        )),
-                  ],
+                                  context.read<PlayerCubit>().pause();
+                                },
+                                icon: Icon(
+                                  Icons.pause,
+                                  color: colorScheme.surface,
+                                ))
+                            : IconButton(
+                                onPressed: () {
+                                  logWarning("play icon pressed");
+
+                                  //* pause
+
+                                  context.read<PlayerCubit>().playMusic();
+                                },
+                                icon: Icon(
+                                  Icons.play_arrow,
+                                  color: colorScheme.surface,
+                                )),
+                        IconButton(
+                            onPressed: ((currentMusicPlaying ?? 0) >=
+                                    (musicPlayingCount - 1))
+                                ? null
+                                : () {
+                                    logWarning("skip_next icon pressed");
+
+                                    //* skip_next
+
+                                    //todo remove setState (refactor)
+                                    if ((currentMusicPlaying ?? 0) <
+                                        (musicPlayingCount - 1)) {
+                                      setState(() {
+                                        currentMusicPlaying =
+                                            (currentMusicPlaying ?? 0) + 1;
+                                      });
+
+                                      logWarning(
+                                          "playlist pressed: $currentMusicPlaying");
+
+                                      final url = songState
+                                              .songEntity
+                                              .songs?[currentMusicPlaying ?? 0]
+                                              .trackUrl ??
+                                          '';
+                                      context
+                                          .read<PlayerCubit>()
+                                          .playMusic(url: url);
+                                    }
+                                  },
+                            icon: Icon(
+                              Icons.skip_next,
+                              color: ((currentMusicPlaying ?? 0) >=
+                                      (musicPlayingCount - 1))
+                                  ? colorScheme.surface.withValues(alpha: .2)
+                                  : colorScheme.surface,
+                            )),
+                      ],
+                    );
+                  },
                 ),
                 contentPadding: EdgeInsets.all(8),
               ),
@@ -342,9 +400,20 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                     (index) {
                       return ListTile(
                         onTap: () {
-                          logWarning("playlist pressed");
                           //* playlist
-                          _playMusicByIndex(index);
+                          // _playMusicByIndex(index);
+                          //todo remove setState (refactor)
+
+                          setState(() {
+                            currentMusicPlaying = index;
+                          });
+
+                          logWarning("playlist pressed: $currentMusicPlaying");
+
+                          final url = songState.songEntity
+                                  .songs?[currentMusicPlaying!].trackUrl ??
+                              '';
+                          context.read<PlayerCubit>().playMusic(url: url);
                         },
                         leading: SizedBox(
                           child: ClipRRect(
@@ -452,9 +521,9 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
     );
   }
 
-  void _playMusicByIndex(int index) {
-    setState(() {
-      currentMusicPlaying = index;
-    });
-  }
+  // void _playMusicByIndex(int index) {
+  //   setState(() {
+  //     currentMusicPlaying = index;
+  //   });
+  // }
 }

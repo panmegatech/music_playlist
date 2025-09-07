@@ -7,6 +7,7 @@ import 'package:music_playlist/features/music/data/music_config_provider_impl.da
 import 'package:music_playlist/features/music/data/repository/music_repository_impl.dart';
 import 'package:music_playlist/features/music/domain/music_config_provider.dart';
 import 'package:music_playlist/features/music/domain/repository/music_repository.dart';
+import 'package:music_playlist/features/music/domain/usecases/pause_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/play_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/playlist_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/song_usecase.dart';
@@ -74,6 +75,12 @@ void _registerFeatureMusic() {
     );
   }
 
+  if (!getIt.isRegistered<PauseMusicUsecase>()) {
+    getIt.registerLazySingleton<PauseMusicUsecase>(
+      () => PauseMusicUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
   //bloc
 
   if (!getIt.isRegistered<PlaylistCubit>()) {
@@ -90,7 +97,9 @@ void _registerFeatureMusic() {
 
   if (!getIt.isRegistered<PlayerCubit>()) {
     getIt.registerFactory<PlayerCubit>(
-      () => PlayerCubit(playMusicUsecase: getIt<PlayMusicUsecase>()),
+      () => PlayerCubit(
+          playMusicUsecase: getIt<PlayMusicUsecase>(),
+          pauseMusicUsecase: getIt<PauseMusicUsecase>()),
     );
   }
 }
