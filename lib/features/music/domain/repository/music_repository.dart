@@ -9,4 +9,7 @@ abstract class MusicRepository {
     String? playlistId,
     String? songId,
   });
+  Future<bool> play(String? url);
+  Future<void> pause();
+  Future<void> stop();
 }

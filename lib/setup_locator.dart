@@ -1,13 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:music_playlist/features/core/constants/global_constant.dart';
 import 'package:music_playlist/features/music/data/datasource/music_remote_data_source.dart';
 import 'package:music_playlist/features/music/data/music_config_provider_impl.dart';
 import 'package:music_playlist/features/music/data/repository/music_repository_impl.dart';
 import 'package:music_playlist/features/music/domain/music_config_provider.dart';
 import 'package:music_playlist/features/music/domain/repository/music_repository.dart';
+import 'package:music_playlist/features/music/domain/usecases/pause_music_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/play_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/playlist_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/song_usecase.dart';
+import 'package:music_playlist/features/music/presentation/bloc/player/player_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/playlist/playlist_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/song/song_cubit.dart';
 
@@ -37,10 +41,17 @@ void _registerFeatureMusic() {
     );
   }
 
+  if (!getIt.isRegistered<AudioPlayer>()) {
+    getIt.registerLazySingleton<AudioPlayer>(
+      () => AudioPlayer(),
+    );
+  }
+
   if (!getIt.isRegistered<MusicRepository>()) {
     getIt.registerLazySingleton<MusicRepository>(
-      () =>
-          MusicRepositoryImpl(remoteDataSource: getIt<MusicRemoteDataSource>()),
+      () => MusicRepositoryImpl(
+          remoteDataSource: getIt<MusicRemoteDataSource>(),
+          audioPlayer: getIt<AudioPlayer>()),
     );
   }
 
@@ -58,6 +69,18 @@ void _registerFeatureMusic() {
     );
   }
 
+  if (!getIt.isRegistered<PlayMusicUsecase>()) {
+    getIt.registerLazySingleton<PlayMusicUsecase>(
+      () => PlayMusicUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<PauseMusicUsecase>()) {
+    getIt.registerLazySingleton<PauseMusicUsecase>(
+      () => PauseMusicUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
   //bloc
 
   if (!getIt.isRegistered<PlaylistCubit>()) {
@@ -69,6 +92,14 @@ void _registerFeatureMusic() {
   if (!getIt.isRegistered<SongCubit>()) {
     getIt.registerFactory<SongCubit>(
       () => SongCubit(songUsecase: getIt<SongUsecase>()),
+    );
+  }
+
+  if (!getIt.isRegistered<PlayerCubit>()) {
+    getIt.registerFactory<PlayerCubit>(
+      () => PlayerCubit(
+          playMusicUsecase: getIt<PlayMusicUsecase>(),
+          pauseMusicUsecase: getIt<PauseMusicUsecase>()),
     );
   }
 }

@@ -204,7 +204,10 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                             onPressed: () {
                               logWarning("play icon pressed");
 
-                              //todo play
+                              Navigator.pushNamed(context, RouteName.musicView,
+                                  arguments: {
+                                    "playlist_id": allPlaylist?[index].id,
+                                  });
                             },
                             icon: Icon(
                               Icons.play_arrow,
