@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
+import 'package:music_playlist/features/music/domain/entities/song_model_songs_item_entity.dart';
 import 'package:music_playlist/features/music/domain/usecases/pause_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/play_music_usecase.dart';
 
@@ -18,13 +19,19 @@ class PlayerCubit extends Cubit<PlayerState> {
           isLoading: false,
           isPlaying: false,
         ));
-  Future<void> playMusic({String? url}) async {
+  Future<void> playMusic(
+      {SongModelSongsItemEntity? songModelSongsItemEntity}) async {
+    final String? url = songModelSongsItemEntity?.trackUrl;
     emit(state.copyWith(isLoading: true));
     final isPlayMusic = await _playMusicUsecase.execute(url);
 
     logInfo("isPlayMusic >> $isPlayMusic");
 
-    return emit(state.copyWith(isLoading: false, isPlaying: isPlayMusic));
+    return emit(state.copyWith(
+      isLoading: false,
+      isPlaying: isPlayMusic,
+      songModelSongsItemEntity: songModelSongsItemEntity,
+    ));
   }
 
   Future<void> pause() async {

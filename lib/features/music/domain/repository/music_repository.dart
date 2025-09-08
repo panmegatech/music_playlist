@@ -12,4 +12,8 @@ abstract class MusicRepository {
   Future<bool> play(String? url);
   Future<void> pause();
   Future<void> stop();
+
+  Stream<bool>? get playingStream;
+  Stream<Duration?>? get durationStream;
+  Stream<Duration>? get positionStream;
 }

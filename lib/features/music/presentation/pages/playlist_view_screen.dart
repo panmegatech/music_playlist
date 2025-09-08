@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
+import 'package:music_playlist/features/music/domain/entities/song_model_songs_item_entity.dart';
 import 'package:music_playlist/features/music/presentation/bloc/player/player_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/song/song_cubit.dart';
 
@@ -217,15 +218,26 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
           final songCount = songState.songEntity.songs?.length ?? 0;
           final randomIndex = random.nextInt(songCount);
 
-          String url = songState.songEntity.songs?[randomIndex].trackUrl ?? '';
+          //? old version - using entity instead of url
+          // String url = songState.songEntity.songs?[randomIndex].trackUrl ?? '';
+          // if (currentMusicPlaying != null) {
+          //   url = songState.songEntity.songs?[currentMusicPlaying!].trackUrl ??
+          //       '';
+          // }
+          // logInfo("PlayerCubit > url : $url");
+          SongModelSongsItemEntity? songModelSongsItemEntity =
+              songState.songEntity.songs?[randomIndex];
 
           if (currentMusicPlaying != null) {
-            url = songState.songEntity.songs?[currentMusicPlaying!].trackUrl ??
-                '';
+            songModelSongsItemEntity =
+                songState.songEntity.songs?[currentMusicPlaying!];
           }
 
-          logInfo("PlayerCubit > url : $url");
-          context.read<PlayerCubit>().playMusic(url: url);
+          logInfo(
+              "PlayerCubit > songModelSongsItemEntity > url : ${songModelSongsItemEntity?.trackUrl}");
+          context
+              .read<PlayerCubit>()
+              .playMusic(songModelSongsItemEntity: songModelSongsItemEntity);
         }
       },
       builder: (context, songState) {
@@ -368,14 +380,12 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
                                       logWarning(
                                           "playlist pressed: $currentMusicPlaying");
 
-                                      final url = songState
-                                              .songEntity
-                                              .songs?[currentMusicPlaying ?? 0]
-                                              .trackUrl ??
-                                          '';
-                                      context
-                                          .read<PlayerCubit>()
-                                          .playMusic(url: url);
+                                      final songModelSongsItemEntity = songState
+                                          .songEntity
+                                          .songs?[currentMusicPlaying ?? 0];
+                                      context.read<PlayerCubit>().playMusic(
+                                          songModelSongsItemEntity:
+                                              songModelSongsItemEntity);
                                     }
                                   },
                             icon: Icon(
@@ -410,10 +420,11 @@ class _PlaylistViewScreenState extends State<PlaylistViewScreen> {
 
                           logWarning("playlist pressed: $currentMusicPlaying");
 
-                          final url = songState.songEntity
-                                  .songs?[currentMusicPlaying!].trackUrl ??
-                              '';
-                          context.read<PlayerCubit>().playMusic(url: url);
+                          final songModelSongsItemEntity =
+                              songState.songEntity.songs?[currentMusicPlaying!];
+                          context.read<PlayerCubit>().playMusic(
+                              songModelSongsItemEntity:
+                                  songModelSongsItemEntity);
                         },
                         leading: SizedBox(
                           child: ClipRRect(

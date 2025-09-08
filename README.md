@@ -1,16 +1,116 @@
-# music_playlist
+# Music Playlist Flutter App
 
-A new Flutter project.
+A Flutter music playlist application built using **Clean Architecture**.  
+The app allows users to manage and play songs from playlists with **play** and **pause** functionality.
+
+---
+
+## Features
+
+- **My Playlist Page**  
+  View all playlists and select one to see the songs inside.
+
+- **Playlist Detail / Player Page**  
+  - View songs in the selected playlist  
+  - Play and pause individual songs  
+  - Stream song duration and position in real-time  
+
+- **Clean Architecture**  
+  Organized into `core` and `music` features, separating **domain**, **data**, and **presentation**.
+
+---
+
+
+
+
+## Project Structure
+
+```bash
+lib/
+├─ features/
+│ ├─ core/
+│ │ ├─ constants/
+│ │ ├─ error/
+│ │ ├─ routes/
+│ │ └─ utils/
+│ └─ music/
+│   ├─ data/
+│   ├─ domain/
+│   │ ├─ entities/
+│   │ ├─ infra/
+│   │ ├─ repository/
+│   │ │ └─ music_repository.dart
+│   │ └─ usecases/
+│   │ ├─ get_duration_stream_usecase.dart
+│   │ ├─ get_playing_stream_usecase.dart
+│   │ ├─ get_position_stream_usecase.dart
+│   │ ├─ pause_music_usecase.dart
+│   │ ├─ play_music_usecase.dart
+│   │ ├─ playlist_usecase.dart
+│   │ ├─ song_usecase.dart
+│   │ ├─ stream_usecase.dart
+│   │ └─ music_config_provider.dart
+│   └─ presentation/
+│   ├─ bloc/
+│   │ ├─ audio/
+│   │ ├─ player/
+│   │ ├─ playlist/
+│   │ └─ song/
+│   ├─ pages/
+│   │ ├─ page_not_found_screen.dart
+│   │ ├─ playlist_screen.dart
+│   │ └─ playlist_view_screen.dart
+│   └─ widgets/
+├─ main_app.dart
+├─ main.dart
+└─ setup_locator.dart
+```
+
+---
+
+
+### Screenshots
+<table border="0" cellspacing="0">
+  <tr>
+    <td>
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="600" alt="My Playlist" >
+      <p align="center">My Playlist</p>
+    </td>
+    <td>
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" height="600" alt="Now Playing" >
+      <p align="center">Now Playing</p>
+    </td>
+  </tr>
+</table>
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter 3.x or higher
+- Dart 3.x
+- A device or emulator for iOS/Android
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/panmegatech/music_playlist.git
+```
+
+```bash
+cd music_playlist
+```
+
+```bash
+flutter pub get
+```
+
+```bash
+flutter run
+```
+
+
+
+
