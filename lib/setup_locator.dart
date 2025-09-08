@@ -7,6 +7,9 @@ import 'package:music_playlist/features/music/data/music_config_provider_impl.da
 import 'package:music_playlist/features/music/data/repository/music_repository_impl.dart';
 import 'package:music_playlist/features/music/domain/music_config_provider.dart';
 import 'package:music_playlist/features/music/domain/repository/music_repository.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_duration_stream_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_playing_stream_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_position_stream_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/pause_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/play_music_usecase.dart';
 import 'package:music_playlist/features/music/domain/usecases/playlist_usecase.dart';
@@ -78,6 +81,24 @@ void _registerFeatureMusic() {
   if (!getIt.isRegistered<PauseMusicUsecase>()) {
     getIt.registerLazySingleton<PauseMusicUsecase>(
       () => PauseMusicUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetPlayingStreamUsecase>()) {
+    getIt.registerLazySingleton<GetPlayingStreamUsecase>(
+      () => GetPlayingStreamUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetPositionStreamUsecase>()) {
+    getIt.registerLazySingleton<GetPositionStreamUsecase>(
+      () => GetPositionStreamUsecase(repository: getIt<MusicRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetDurationStreamUsecase>()) {
+    getIt.registerLazySingleton<GetDurationStreamUsecase>(
+      () => GetDurationStreamUsecase(repository: getIt<MusicRepository>()),
     );
   }
 
