@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_playlist/features/core/routes/route_name.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
+import 'package:music_playlist/features/music/presentation/bloc/audio/audio_cubit.dart';
+import 'package:music_playlist/features/music/presentation/bloc/player/player_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/playlist/playlist_cubit.dart';
 import 'package:music_playlist/features/music/presentation/widgets/error_display.dart';
 import 'package:music_playlist/features/music/presentation/widgets/progress_slider.dart';
@@ -254,18 +256,158 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
           },
         ),
       ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.all(8),
-        height: 70,
-        child: ProgressSlider(
-          position: Duration(seconds: 65),
-          duration: Duration(seconds: 125),
-          onChanged: (newPosition) {
-            //todo
-            // context.read<AudioBloc>().add(SeekAudioEvent(newPosition));
-          },
-        ),
+      bottomNavigationBar: BlocBuilder<PlayerCubit, PlayerState>(
+        builder: (context, playerState) {
+          if (playerState.songModelSongsItemEntity?.trackUrl?.isNotEmpty ??
+              false) {
+            return BlocBuilder<AudioCubit, AudioState>(
+              builder: (context, audioState) {
+                return Container(
+                  color: Colors.white,
+                  padding: const EdgeInsets.all(8),
+                  height: 170,
+                  child: Column(
+                    children: [
+                      ProgressSlider(
+                        position: audioState.position,
+                        duration: audioState.duration ?? Duration(seconds: 60),
+                        onChanged: (newPosition) {
+                          //todo update newPosition
+                          logWarning("newPosition: $newPosition");
+                        },
+                      ),
+                      SizedBox(
+                        child: ListTile(
+                          onTap: () {
+                            logWarning(" current playlist pressed");
+                          },
+                          leading: SizedBox(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: AspectRatio(
+                                aspectRatio: 1,
+                                child: Image.network(
+                                  playerState
+                                          .songModelSongsItemEntity?.imageUrl ??
+                                      '',
+                                  fit: BoxFit.cover,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child;
+                                    }
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return SizedBox(
+                                      width: 40,
+                                      height: 40,
+                                      // color: colorScheme.secondary,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                              flex: 3,
+                                              child: Icon(
+                                                Icons.image,
+                                                size: 36,
+                                              )),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              '(Image not found)',
+                                              style: TextStyle(fontSize: 5),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          title: Text(
+                            '${playerState.songModelSongsItemEntity?.title}',
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          subtitle: Text(
+                            '${playerState.songModelSongsItemEntity?.artist}',
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              overflow: TextOverflow.ellipsis,
+                              color: Colors.black54,
+                              fontSize: 14,
+                            ),
+                          ),
+                          trailing: playerState.isPlaying
+                              ? IconButton(
+                                  // style: ButtonStyle(
+                                  //   side: WidgetStatePropertyAll(
+                                  //       BorderSide(color: Colors.grey)),
+                                  //   backgroundColor: WidgetStatePropertyAll(Colors.white),
+                                  // ),
+                                  onPressed: () {
+                                    logWarning("pause icon pressed");
+
+                                    context.read<PlayerCubit>().pause();
+                                  },
+                                  icon: Icon(
+                                    Icons.pause,
+                                    color: Colors.black,
+                                    size: 40,
+                                  ))
+                              : IconButton(
+                                  // style: ButtonStyle(
+                                  //   side: WidgetStatePropertyAll(
+                                  //       BorderSide(color: Colors.grey)),
+                                  //   backgroundColor: WidgetStatePropertyAll(Colors.white),
+                                  // ),
+                                  onPressed: () {
+                                    logWarning(
+                                        "play icon pressed > position: ${audioState.position.inSeconds} | duration: ${audioState.duration?.inSeconds}");
+
+                                    if (audioState.position.inSeconds ==
+                                        audioState.duration?.inSeconds) {
+                                      context.read<PlayerCubit>().playMusic(
+                                          songModelSongsItemEntity: playerState
+                                              .songModelSongsItemEntity);
+                                    } else {
+                                      context.read<PlayerCubit>().playMusic();
+                                    }
+                                  },
+                                  icon: Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.black,
+                                    size: 40,
+                                  )),
+                          contentPadding: EdgeInsets.all(8),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          return SizedBox();
+        },
       ),
     );
   }
