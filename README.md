@@ -24,7 +24,7 @@ The app allows users to manage and play songs from playlists with **play** and *
 
 
 ### Screenshots
-<table border="0">
+<table border="0" cellspacing="0">
   <tr>
     <td>
 <img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="600" alt="My Playlist" >
