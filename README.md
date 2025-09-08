@@ -16,7 +16,7 @@ The app allows users to manage and play songs from playlists with **play** and *
   - Stream song duration and position in real-time  
 
 - **Clean Architecture**  
-  Organized into `core` and `music` features, separating **domain**, **data**, **presentation**, and **use cases**.
+  Organized into `core` and `music` features, separating **domain**, **data**, and **presentation**.
 
 ---
 
