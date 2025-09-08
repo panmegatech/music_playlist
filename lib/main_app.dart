@@ -10,8 +10,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          PlayerCubit(playMusicUsecase: getIt(), pauseMusicUsecase: getIt()),
+      create: (_) => PlayerCubit(
+        playMusicUsecase: getIt(),
+        pauseMusicUsecase: getIt(),
+      ),
       child: MaterialApp(
         onGenerateRoute: AppRouter.generateRoute,
         theme: ThemeData(
