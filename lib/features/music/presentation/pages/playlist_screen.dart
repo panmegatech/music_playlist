@@ -263,14 +263,16 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             return BlocBuilder<AudioCubit, AudioState>(
               builder: (context, audioState) {
                 return Container(
-                  color: Colors.white,
                   padding: const EdgeInsets.all(8),
                   height: 170,
                   child: Column(
                     children: [
                       ProgressSlider(
                         position: audioState.position,
-                        duration: audioState.duration ?? Duration(seconds: 60),
+                        duration: (audioState.duration?.inSeconds != null &&
+                                audioState.duration?.inSeconds != 0)
+                            ? audioState.duration!
+                            : Duration(seconds: 160),
                         onChanged: (newPosition) {
                           //todo update newPosition
                           logWarning("newPosition: $newPosition");

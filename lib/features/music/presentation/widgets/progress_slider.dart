@@ -14,13 +14,14 @@ class ProgressSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final max = duration.inMilliseconds.toDouble();
-    final value = position.inMilliseconds.clamp(0, max);
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Slider(
+      inactiveColor: colorScheme.onPrimary.withValues(alpha: .1),
       min: 0.0,
-      max: max > 0 ? max : 1.0,
-      value: value.toDouble(),
+      max: duration.inMilliseconds.toDouble(),
+      value:
+          position.inMilliseconds.clamp(0, duration.inMilliseconds).toDouble(),
       onChanged: (newValue) {
         onChanged(Duration(milliseconds: newValue.toInt()));
       },
