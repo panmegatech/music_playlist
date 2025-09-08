@@ -4,6 +4,7 @@ import 'package:music_playlist/features/core/routes/route_name.dart';
 import 'package:music_playlist/features/core/utils/log_color.dart';
 import 'package:music_playlist/features/music/presentation/bloc/playlist/playlist_cubit.dart';
 import 'package:music_playlist/features/music/presentation/widgets/error_display.dart';
+import 'package:music_playlist/features/music/presentation/widgets/progress_slider.dart';
 
 class PlaylistScreen extends StatefulWidget {
   const PlaylistScreen({super.key});
@@ -250,6 +251,19 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                 ),
               ),
             );
+          },
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(8),
+        height: 70,
+        child: ProgressSlider(
+          position: Duration(seconds: 65),
+          duration: Duration(seconds: 125),
+          onChanged: (newPosition) {
+            //todo
+            // context.read<AudioBloc>().add(SeekAudioEvent(newPosition));
           },
         ),
       ),

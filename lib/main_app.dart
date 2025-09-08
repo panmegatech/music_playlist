@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_playlist/features/core/constants/global_constant.dart';
 import 'package:music_playlist/features/core/routes/app_router.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_duration_stream_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_playing_stream_usecase.dart';
+import 'package:music_playlist/features/music/domain/usecases/get_position_stream_usecase.dart';
+import 'package:music_playlist/features/music/presentation/bloc/audio/audio_cubit.dart';
 import 'package:music_playlist/features/music/presentation/bloc/player/player_cubit.dart';
 
 class MainApp extends StatelessWidget {
@@ -9,11 +13,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => PlayerCubit(
-        playMusicUsecase: getIt(),
-        pauseMusicUsecase: getIt(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => PlayerCubit(
+            playMusicUsecase: getIt(),
+            pauseMusicUsecase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => AudioCubit(
+            getPlayingStreamUsecase: getIt<GetPlayingStreamUsecase>(),
+            getPositionStreamUsecase: getIt<GetPositionStreamUsecase>(),
+            getDurationStreamUsecase: getIt<GetDurationStreamUsecase>(),
+          ),
+        ),
+      ],
       child: MaterialApp(
         onGenerateRoute: AppRouter.generateRoute,
         theme: ThemeData(

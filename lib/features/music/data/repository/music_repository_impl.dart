@@ -79,4 +79,13 @@ class MusicRepositoryImpl implements MusicRepository {
   Future<void> stop() async {
     await audioPlayer?.stop();
   }
+
+  @override
+  Stream<Duration?>? get durationStream => audioPlayer?.durationStream;
+
+  @override
+  Stream<bool>? get playingStream => audioPlayer?.playingStream;
+
+  @override
+  Stream<Duration>? get positionStream => audioPlayer?.positionStream;
 }
