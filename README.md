@@ -34,33 +34,33 @@ lib/
 │ │ ├─ routes/
 │ │ └─ utils/
 │ └─ music/
-│ ├─ data/
-│ ├─ domain/
-│ │ ├─ entities/
-│ │ ├─ infra/
-│ │ ├─ repository/
-│ │ │ └─ music_repository.dart
-│ │ └─ usecases/
-│ │ ├─ get_duration_stream_usecase.dart
-│ │ ├─ get_playing_stream_usecase.dart
-│ │ ├─ get_position_stream_usecase.dart
-│ │ ├─ pause_music_usecase.dart
-│ │ ├─ play_music_usecase.dart
-│ │ ├─ playlist_usecase.dart
-│ │ ├─ song_usecase.dart
-│ │ ├─ stream_usecase.dart
-│ │ └─ music_config_provider.dart
-│ └─ presentation/
-│ ├─ bloc/
-│ │ ├─ audio/
-│ │ ├─ player/
-│ │ ├─ playlist/
-│ │ └─ song/
-│ ├─ pages/
-│ │ ├─ page_not_found_screen.dart
-│ │ ├─ playlist_screen.dart
-│ │ └─ playlist_view_screen.dart
-│ └─ widgets/
+│   ├─ data/
+│   ├─ domain/
+│   │ ├─ entities/
+│   │ ├─ infra/
+│   │ ├─ repository/
+│   │ │ └─ music_repository.dart
+│   │ └─ usecases/
+│   │ ├─ get_duration_stream_usecase.dart
+│   │ ├─ get_playing_stream_usecase.dart
+│   │ ├─ get_position_stream_usecase.dart
+│   │ ├─ pause_music_usecase.dart
+│   │ ├─ play_music_usecase.dart
+│   │ ├─ playlist_usecase.dart
+│   │ ├─ song_usecase.dart
+│   │ ├─ stream_usecase.dart
+│   │ └─ music_config_provider.dart
+│   └─ presentation/
+│   ├─ bloc/
+│   │ ├─ audio/
+│   │ ├─ player/
+│   │ ├─ playlist/
+│   │ └─ song/
+│   ├─ pages/
+│   │ ├─ page_not_found_screen.dart
+│   │ ├─ playlist_screen.dart
+│   │ └─ playlist_view_screen.dart
+│   └─ widgets/
 ├─ main_app.dart
 ├─ main.dart
 └─ setup_locator.dart
