@@ -65,6 +65,16 @@ lib/
 
 ---
 
+## Screenshots
+
+### My Playlist Screen
+![My Playlist](https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true)
+
+### Now Playing Screen
+![Now Playing](https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true)
+
+
+
 ## Getting Started
 
 ### Prerequisites
