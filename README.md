@@ -21,13 +21,21 @@ The app allows users to manage and play songs from playlists with **play** and *
 ---
 
 
-## Screenshots
 
-### My Playlist Screen
+
+### Screenshots
+<table>
+  <tr>
+    <td>
 <img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" width="400" alt="My Playlist" >
-
-### Now Playing Screen
+      <p align="center">My Playlist</p>
+    </td>
+    <td>
 <img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" width="400" alt="Now Playing" >
+      <p align="center">Now Playing</p>
+    </td>
+  </tr>
+</table>
 
 
 ---
