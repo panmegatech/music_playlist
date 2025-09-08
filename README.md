@@ -23,23 +23,6 @@ The app allows users to manage and play songs from playlists with **play** and *
 
 
 
-### Screenshots
-<table border="0" cellspacing="0">
-  <tr>
-    <td>
-<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="600" alt="My Playlist" >
-      <p align="center">My Playlist</p>
-    </td>
-    <td>
-<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" height="600" alt="Now Playing" >
-      <p align="center">Now Playing</p>
-    </td>
-  </tr>
-</table>
-
-
----
-
 ## Project Structure
 
 ```bash
@@ -81,12 +64,26 @@ lib/
 ├─ main_app.dart
 ├─ main.dart
 └─ setup_locator.dart
-
+```
 
 ---
 
 
+### Screenshots
+<table border="0" cellspacing="0">
+  <tr>
+    <td>
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="600" alt="My Playlist" >
+      <p align="center">My Playlist</p>
+    </td>
+    <td>
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" height="600" alt="Now Playing" >
+      <p align="center">Now Playing</p>
+    </td>
+  </tr>
+</table>
 
+---
 
 ## Getting Started
 
@@ -100,8 +97,20 @@ lib/
 
 ```bash
 git clone https://github.com/panmegatech/music_playlist.git
-cd music_-_playlist
+```
+
+```bash
+cd music_playlist
+```
+
+```bash
 flutter pub get
+```
+
+```bash
 flutter run
+```
+
+
 
 
