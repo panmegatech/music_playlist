@@ -27,11 +27,11 @@ The app allows users to manage and play songs from playlists with **play** and *
 <table border="0">
   <tr>
     <td>
-<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="400" alt="My Playlist" >
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true" height="600" alt="My Playlist" >
       <p align="center">My Playlist</p>
     </td>
     <td>
-<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" height="400" alt="Now Playing" >
+<img src="https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true" height="600" alt="Now Playing" >
       <p align="center">Now Playing</p>
     </td>
   </tr>
