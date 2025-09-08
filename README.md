@@ -22,6 +22,7 @@ The app allows users to manage and play songs from playlists with **play** and *
 
 ## Project Structure
 
+```bash
 lib/
 ├─ features/
 │ ├─ core/
