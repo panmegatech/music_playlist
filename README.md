@@ -20,6 +20,17 @@ The app allows users to manage and play songs from playlists with **play** and *
 
 ---
 
+
+## Screenshots
+
+### My Playlist Screen
+![My Playlist](https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true)
+
+### Now Playing Screen
+![Now Playing](https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true)
+
+---
+
 ## Project Structure
 
 ```bash
@@ -65,13 +76,6 @@ lib/
 
 ---
 
-## Screenshots
-
-### My Playlist Screen
-![My Playlist](https://github.com/panmegatech/music_playlist/blob/develop/images/playlist.png?raw=true)
-
-### Now Playing Screen
-![Now Playing](https://github.com/panmegatech/music_playlist/blob/develop/images/play-music.png?raw=true)
 
 
 
